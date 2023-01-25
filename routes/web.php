@@ -16,11 +16,6 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('admin/producttable', [ProductController::class, 'index'])->middleware('admin');
-
-// });
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,10 +31,33 @@ Route::get('payment-cancel', [PaypalController::class, 'cancel'])
     ->name('payment.cancel');
 Route::get('payment-success', [PaypalController::class, 'success'])
     ->name('payment.success');
-//admin
-Route::get('admin/producttable', [ProductController::class, 'index']);
-Route::get('/addproduct', [ProductController::class, 'addproduct']);
-Route::post('createproduct', [ProductController::class, 'createproduct']);
-Route::get('/delete/{id}', [ProductController::class, 'deleteproduct']);
-Route::get('/editproduct/{id}', [ProductController::class, 'updateproduct']);
-Route::post('/edit', [ProductController::class, 'editproduct']);
+
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('admin/producttable', [ProductController::class, 'index']);
+    Route::get('/addproduct', [ProductController::class, 'addproduct']);
+
+    Route::post('createproduct', [ProductController::class, 'createproduct']);
+
+    Route::get('/delete/{id}', [ProductController::class, 'deleteproduct']);
+
+    Route::get('/editproduct/{id}', [ProductController::class, 'updateproduct']);
+
+    Route::post('/edit', [ProductController::class, 'editproduct']);
+
+    });
+
+//oder
+Route::get('/order', [ProductController::class, 'order']);
+Route::post('/orderplace', [ProductController::class, 'orderplace']);
+
+
+
+//details
+
+Route::get('/detail/{id}', [ProductController::class, 'detail']);
+
+Route::post('/cart', [ProductController::class, 'addToCart']);
+
+
+

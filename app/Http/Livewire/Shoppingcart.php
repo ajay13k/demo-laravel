@@ -8,7 +8,6 @@ use Srmklive\PayPal\Services\PayPal as PayPalClient;
 class Shoppingcart extends Component
 {
     public $cartitems, $sub_total = 0, $total = 0, $tax = 0;
-
     public function render()
     {
         $this->cartitems = Cart::with('product')
@@ -23,6 +22,7 @@ class Shoppingcart extends Component
             $this->sub_total += $item->product->price * $item->quantity;
         }
         $this->total = $this->sub_total - $this->tax;
+        session()->put('total', $this->total);
 
         return view('livewire.shoppingcart');
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Livewire\Cartcounter;
+use App\Http\Middleware\Admin;
 use App\Models\User;
 use App\Models\user_roles;
 
@@ -51,7 +53,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect("/");
 
     }
 }
+
+

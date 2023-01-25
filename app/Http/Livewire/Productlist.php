@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Livewire;
+
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Shoppingcart;
@@ -26,6 +27,8 @@ class Productlist extends Component
             Shoppingcart::updateOrCreate($data);
 
             $this->emit('updateCartCount');
+
+            session()->put('addtocart', $data);
 
             session()->flash('success', 'Product added to the cart successfully');
         } else {

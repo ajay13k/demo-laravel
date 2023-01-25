@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Shoppingcart;
-
 class Cartcounter extends Component
 {
     public $total = 0;
@@ -21,5 +20,9 @@ class Cartcounter extends Component
         $this->total = shoppingcart::whereUserId(auth()->user()->id)
             ->where('status', '!=', shoppingcart::STATUS['success'])
             ->count();
+            session()->put('totolcart', $this->total);
+            session()->save();
+        return redirect("/");
+
     }
 }

@@ -100,13 +100,13 @@
                                 </div>
                             </div>
 
-                            <a href="#">
-                                <button
-                                    class="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none"
-                                    wire:click="checkout" wire:loading.attr="disabled">
-                                    <span class="ml-2 mt-5px">Procceed to checkout</span>
-                                </button>
-                            </a>
+                            <div style="padding-top: 20px;padding-left:100px">
+                                <td colspan="5" class="text-right">
+                                    <a href="{{ url('/') }}" class="btn btn-warning">Continue Shopping</a>
+                                    <a href="/order"> <button
+                                            class="btn btn-success">Checkout</button></a>
+                                </td>
+                            </div>
 
                         </div>
                     </div>
@@ -115,3 +115,6 @@
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
